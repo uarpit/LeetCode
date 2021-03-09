@@ -14,24 +14,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        prev = None
-        junk = len(nums)
-        for i in range(0,len(nums)):
-            if nums[i] != prev:
-                if junk < i:
-                    prev = nums[i]
-                    nums[junk],nums[i] = nums[i],nums[junk]
-                    junk +=1
-                else:
-                    prev = nums[i]
-            else:
-                if junk <= i:
-                    pass
-                else:
-                    junk = i
-                
-        return junk
-    
+        i=0
+        for j in range(1,len(nums)):
+            if nums[j] != nums[i]:
+                i += 1
+                nums[i] = nums[j]
+        return i+1
+        
+        
 if __name__ == "__main__":
     s = Solution()
     nums = [0,0,1,1,1,2,2,3,3,4]
